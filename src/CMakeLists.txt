@@ -4,6 +4,7 @@ set(INTERCEPT_CLIENT_PATH "${CMAKE_SOURCE_DIR}/intercept/src/client")
 
 set(INTERCEPT_INCLUDE_PATH "${INTERCEPT_CLIENT_PATH}/headers" "${INTERCEPT_CLIENT_PATH}/headers/client/" "${INTERCEPT_CLIENT_PATH}/headers/client/sqf")
 
+set(ANSEL_SDK "${CMAKE_SOURCE_DIR}/lib/NVAnselSDK")
 
 if(USE_64BIT_BUILD)
     set(INTERCEPT_CBA_NAME "ArmAnsel_x64")
@@ -48,7 +49,7 @@ set(library_sources ${INTERCEPT_CBA_SOURCES})
 
 add_library( ${INTERCEPT_CBA_NAME} SHARED ${library_sources} ${INTERCEPT_SOURCES} ${INTERCEPT_CBA_SQF_EXT_SOURCES})
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${INTERCEPT_INCLUDE_PATH} )
+include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${INTERCEPT_INCLUDE_PATH} "${ANSEL_SDK}/include")
 
 target_link_libraries (${INTERCEPT_CBA_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
